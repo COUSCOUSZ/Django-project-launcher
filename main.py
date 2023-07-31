@@ -41,7 +41,8 @@ command_to_run+=f"python manage.py startapp {app_name} ;"
 print(f"***********************  APP {app_name} CREATED  ***********************")
 command_to_run+=f"python manage.py runserver;"
 print("http://127.0.0.1:8000/")
- 
+
+
 
 
 
