@@ -2,6 +2,7 @@ import subprocess
 import os
 import time
 import pyautogui as p
+from tkinter.filedialog import askdirectory
 from pynput.keyboard import Controller
 keyboard = Controller()
 
@@ -24,11 +25,6 @@ def run_powershell_command(command):
 
 
 def runserver(folder_path,folder_name,project_name):
-    # run_command=f"cd ~;"
-    # run_command+=f" cd {folder_path};"
-    # run_command+=f" cd {folder_name} ;"
-    # run_command+=f" cd {project_name} ;"
-    # run_command+=f" python manage.py runserver;"
     home_directory = os.path.expanduser("~")
     full_path = os.path.join(home_directory, folder_path, folder_name, project_name)
     run_command = rf"cd {full_path}"
@@ -45,16 +41,12 @@ def runserver(folder_path,folder_name,project_name):
 # /////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-
-
 # Example usage:
 print("-------------------------------------------------------")
-folder_path="Documents/test"
-folder_name="project_folder"
-project_name="project"
-app_name="app"
-# folder_name=input("Enter your folder name: ") 
-# project_name=input("Enter your project name: ")
+folder_path=askdirectory(title='My Title',mustexist=True)
+folder_name=input("Enter your folder name: ") 
+project_name=input("Enter your project name: ")
+app_name=input("Enter your app name: ")
 print("-------------------------------------------------------")
 command_to_run=f"cd ~; cd {folder_path};"
 command_to_run += f"mkdir {folder_name}; cd {folder_name} ;"
